@@ -5,7 +5,8 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ a }) {
+  console.log('a', a);
   return (
     <>
       <Head>
@@ -120,4 +121,12 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context) {
+  console.log(context.req.rawHeaders[1])
+  const a = { host: context.req.rawHeaders[1], }
+  return {
+    props: { a },
+  }
 }
