@@ -5,8 +5,9 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ a }) {
+export default function Home({ a, data }) {
   console.log('a', a.host);
+  console.log('data', data);
   return (
     <>
       <Head>
@@ -126,7 +127,12 @@ export default function Home({ a }) {
 export async function getServerSideProps(context) {
   console.log(context.req.rawHeaders[1])
   const a = { host: context.req.rawHeaders[1], }
+  let data = {};
+  if (a.host === 'next-test-fnxs.vercel.app') {
+    const res = await fetch(`https://api.bonikapp.com/categories/allCategories?shop_id=41`)
+    data = await res.json()
+  }
   return {
-    props: { a },
+    props: { a, data },
   }
 }
