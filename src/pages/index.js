@@ -127,7 +127,7 @@ export async function getServerSideProps(context) {
   console.log(context.req.rawHeaders[1])
   const a = { host: context.req.rawHeaders[1], }
   let data = {};
-  if (a.host === 'next-test-fnxs.vercel.app') {
+  if (a.host === 'test.digidokan.com') {
     //redirect to page abc
     return {
       redirect: {
