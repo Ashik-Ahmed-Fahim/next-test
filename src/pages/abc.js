@@ -2,6 +2,9 @@ import React from 'react';
 
 const abc = ({a}) => {
     console.log('a', a.host);
+    //catch query params
+    const { query } = useRouter();
+    console.log('query', query);
     return (
         <>
             Matched

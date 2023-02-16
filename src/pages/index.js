@@ -131,7 +131,7 @@ export async function getServerSideProps(context) {
     //redirect to page abc
     return {
       redirect: {
-        destination: '/abc',
+        destination: '/abc?name=abc',
         permanent: false,
       },
     }
