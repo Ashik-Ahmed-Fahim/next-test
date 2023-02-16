@@ -127,19 +127,12 @@ export async function getServerSideProps(context) {
   console.log(context.req.rawHeaders[1])
   const a = { host: context.req.rawHeaders[1], }
   let data = {};
-  if (a.host === 'test.digidokan.com') {
+  if (a.host !== 'test.digidokan.com') {
     //redirect to page abc
     return {
       redirect: {
-        destination: '/abc',
+        destination: '/abc?name=abc',
         permanent: false,
-        has: [
-          {
-            type: 'query',
-            key: 'name',
-            value: 'abc'
-          }
-        ]
       },
     }
   } else {
