@@ -131,11 +131,18 @@ export async function getServerSideProps(context) {
     //redirect to page abc
     return {
       redirect: {
-        destination: '/abc?name=abc',
+        destination: '/abc',
         permanent: false,
+        has: [
+          {
+            type: 'query',
+            key: 'name',
+            value: 'abc'
+          }
+        ]
       },
     }
-  }else{
+  } else {
     //redirect to page notMatched
     return {
       redirect: {
